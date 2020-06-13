@@ -23,11 +23,11 @@ class _ProductScreenState extends State<ProductScreen> {
             padding: const EdgeInsets.all(10.0),
             itemCount: loadProducts.length,
             itemBuilder: (ctx, i) => GridItem(
-                  loadProducts[i].id,
-                  loadProducts[i].description,
-                  loadProducts[i].price,
-                  loadProducts[i].imageUrl,
-                ),
+                loadProducts[i].id,
+                loadProducts[i].description,
+                loadProducts[i].price,
+                loadProducts[i].imageUrl,
+                loadProducts[i].isFavourite),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10.0,

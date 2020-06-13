@@ -1,12 +1,15 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import '../screens/product_detail.dart';
 
 class GridItem extends StatelessWidget {
   final String id;
   final String description;
   final double price;
   final String imageUrl;
-  GridItem(this.id, this.description, this.price, this.imageUrl);
+  final bool isFav;
+
+  GridItem(this.id, this.description, this.price, this.imageUrl, this.isFav);
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +22,24 @@ class GridItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(11.0),
         child: GridTile(
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.cover,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => ProductDetail(description),
+                ),
+              );
+            },
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
           ),
           footer: GridTileBar(
             backgroundColor: Colors.black87,
             leading: IconButton(
               icon: Icon(
-                Icons.favorite,
+                isFav ? Icons.favorite : Icons.favorite_border,
                 size: 20,
                 color: Theme.of(context).accentColor,
               ),
@@ -43,7 +55,7 @@ class GridItem extends StatelessWidget {
             ),
             title: Text(
               description,
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
           ),
