@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './replacer.dart';
+import './screens/product_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SMEs Demo',
+      title: 'DurianX',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Homepage(title: 'SMEs DEMO'),
+      home: ProductScreen(title: 'DURIAN - SMEs'),
     );
   }
 }
