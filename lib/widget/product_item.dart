@@ -10,24 +10,43 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-      child: Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
+    return Container(
+      decoration: new BoxDecoration(
+        border: Border.all(width: 1, color: Colors.grey[900]),
+        borderRadius: new BorderRadius.all(Radius.circular(12)),
+        shape: BoxShape.rectangle,
       ),
-      footer: GridTileBar(
-        backgroundColor: Colors.black54,
-        leading: IconButton(
-          icon: Icon(Icons.favorite),
-          onPressed: () {},
-        ),
-        trailing: IconButton(
-          icon: Icon(Icons.shopping_cart),
-          onPressed: () {},
-        ),
-        title: Text(
-          description,
-          textAlign: TextAlign.center,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(11.0),
+        child: GridTile(
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+          ),
+          footer: GridTileBar(
+            backgroundColor: Colors.black87,
+            leading: IconButton(
+              icon: Icon(
+                Icons.favorite,
+                size: 20,
+                color: Theme.of(context).accentColor,
+              ),
+              onPressed: () {},
+            ),
+            trailing: IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                size: 20,
+                color: Theme.of(context).accentColor,
+              ),
+              onPressed: () {},
+            ),
+            title: Text(
+              description,
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
       ),
     );
