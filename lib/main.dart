@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import './screens/product_screen.dart';
 import './screens/product_detail.dart';
+import './screens/cart_screen.dart';
 import './providers/products.dart';
+import './providers/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +15,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c) => Products()),
+        ChangeNotifierProvider(create: (c) => Cart()),
+      ],
       child: MaterialApp(
         title: 'DurianX',
         theme: ThemeData(
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
         home: ProductScreen(title: 'DURIAN - SMEs'),
         routes: {
           ProductDetail.routeName: (ctx) => ProductDetail(),
+          CartScreen.routeName: (ctx) => CartScreen()
         },
       ),
     );
