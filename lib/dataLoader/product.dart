@@ -14,14 +14,14 @@ final List<Product> loadProducts = [
       price: 360.0,
       imageUrl:
           'https://fruitmark.moc.go.th/fruitMarket/fileAttach/23102019_150522-0000000385.jpg',
-      isFavourite: true),
+      isFavourite: false),
   Product(
       id: 'DUR003',
       description: 'หมอนทอง',
       price: 333.50,
       imageUrl:
           'https://www.thairath.co.th/media/B6FtNKtgSqRqbnNsUzGkKUBRgEpERPMWBCPNCFcEomk4ke65wfZt03sszIoPnpnnYZ8n0.webp',
-      isFavourite: true),
+      isFavourite: false),
   Product(
       id: 'DUR004',
       description: 'กระดุมทอง',
