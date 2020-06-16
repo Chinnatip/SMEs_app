@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import './screens/product_screen.dart';
 import './screens/product_detail.dart';
 import './screens/cart_screen.dart';
+import './screens/order_screen.dart';
+
 import './providers/products.dart';
 import './providers/cart.dart';
 import './providers/orders.dart';
@@ -34,7 +36,8 @@ class MyApp extends StatelessWidget {
         home: ProductScreen(title: 'DURIAN - SMEs'),
         routes: {
           ProductDetail.routeName: (ctx) => ProductDetail(),
-          CartScreen.routeName: (ctx) => CartScreen()
+          CartScreen.routeName: (ctx) => CartScreen(),
+          OrderScreen.routeName: (ctx) => OrderScreen(),
         },
       ),
     );
