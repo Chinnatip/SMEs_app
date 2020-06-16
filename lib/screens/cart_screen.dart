@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart.dart' show Cart;
+import '../providers/orders.dart';
 import '../widget/cart_item.dart';
 
 class CartScreen extends StatefulWidget {
@@ -14,7 +15,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-
     return Scaffold(
         appBar: AppBar(
           title: Text('Your Cart'),
@@ -41,9 +41,17 @@ class _CartScreenState extends State<CartScreen> {
                         backgroundColor: Theme.of(context).primaryColor,
                       ),
                       FlatButton(
-                        onPressed: () {},
                         child: Text('ORDER NOW'),
                         textColor: Theme.of(context).primaryColor,
+                        onPressed: () {
+                          // Add orders
+                          Provider.of<Orders>(context, listen: false).addOrder(
+                            cart.items.values.toList(),
+                            cart.getTotalAmount(),
+                          );
+                          // Clear cart
+                          cart.clear();
+                        },
                       )
                     ],
                   )),
@@ -53,6 +61,7 @@ class _CartScreenState extends State<CartScreen> {
               child: ListView.builder(
                 itemBuilder: (ctx, i) => CartItem(
                   cart.items.values.toList()[i].id,
+                  cart.items.keys.toList()[i],
                   cart.items.values.toList()[i].description,
                   cart.items.values.toList()[i].price,
                   cart.items.values.toList()[i].quantity,
